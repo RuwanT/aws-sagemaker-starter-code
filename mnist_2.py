@@ -30,8 +30,8 @@ def model(x_train, y_train, x_test, y_test):
     model.compile(optimizer='adam',
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
-    model.fit(x_train, y_train)
-    model.evaluate(x_test, y_test)
+    model.fit(x_train, y_train, verbose=0)
+    model.evaluate(x_test, y_test, verbose=0)
 
     return model
 
