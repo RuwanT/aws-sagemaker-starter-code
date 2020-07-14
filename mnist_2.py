@@ -18,10 +18,10 @@ import numpy as np
 import json
 
 
-def model(x_train, y_train, x_test, y_test):
+def train_model(x_train, y_train, x_test, y_test):
     """Generate a simple model"""
     model = tf.keras.models.Sequential([
-        tf.keras.layers.Flatten(),
+        tf.keras.layers.Flatten(input_shape=[784,]),
         tf.keras.layers.Dense(1024, activation=tf.nn.relu),
         tf.keras.layers.Dropout(0.4),
         tf.keras.layers.Dense(10, activation=tf.nn.softmax)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     train_data, train_labels = _load_training_data(args.train)
     eval_data, eval_labels = _load_testing_data(args.train)
 
-    mnist_classifier = model(train_data, train_labels, eval_data, eval_labels)
+    mnist_classifier = train_model(train_data, train_labels, eval_data, eval_labels)
 
     # if args.current_host == args.hosts[0]:
     #   # save model to an S3 directory with version number '00000001'
