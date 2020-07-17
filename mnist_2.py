@@ -37,10 +37,10 @@ def train_model(x_train, y_train, x_test, y_test):
 
 def evalaute_model(x_test, y_test, model_path):
     model = tf.keras.models.load_model(model_path)
-    model.summary()
-    model.evaluate(x_test, y_test)
+    # model.summary()
+    acc = model.evaluate(x_test, y_test, verbose=0)
 
-    return model
+    return acc
 
 
 def _load_training_data(base_dir):
